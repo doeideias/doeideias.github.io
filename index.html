@@ -3,11 +3,52 @@
 <html>
   <head>
     <title>DoeIdeias.org</title>
+
+<style>
+  .button {
+    border: none;
+    color: white;
+    padding: 12px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    top: 5px;
+  }
+  
+  .button1 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #4CAF50;
+  }
+  
+  .button1:hover {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .button2:hover {
+    background-color: #03A9F4; 
+    color: white; 
+    border: 2px solid white;
+  }
+  
+  .button2 {
+    background-color: white;
+    color: #03A9F4;
+    border: 2px solid #03A9F4;
+  }
+  /* TODO tirar borda preta do botão selecionado */
+  
+  </style>
   </head>
   <body style="background-color:#03A9F4">
     <a href="https://www.facebook.com/groups/doeideias/" target="_blank"><img src="facebook_icon.png" alt="Smiley face" width="42" height="42"></a>
-    <a href="https://www.youtube.com/channel/UClO0UW4CB222hF5E6b4amMg" target="_blank"><img src="youtube_icon.png" alt="Meu canal"></a>
-    <a href="profissional-classe-a.html"> Profissional Classe A</a>
+    <a href="https://www.youtube.com/channel/UClO0UW4CB222hF5E6b4amMg" target="_blank"><img src="youtube_icon.png" alt="Meu canal" style="margin-left: 4px;"></a>
+    <button class="button button2" style="position:absolute;left:122px" onclick="window.open('https://trello.com/b/EQrykVlR/doe-ideias', '_blank')">Banco de ideias</button>
+    <button class="button button2" style="position:absolute;left:307px" onclick="window.open('profissional-classe-a.html', '_blank')">Profissional Classe A</button>
     <div id="digitando" style="font-family: cursive; font-size: 300%; color: white; position: relative">Comunidade Doe Ideias ></div>
     <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe1yk63BIuzJEk1UlpZRUnHrn6e101DJOVvXtU4zwHifj5EBw/viewform?embedded=true" width=99% height=80% frameborder="0" marginheight="0" marginwidth="0" style="position: absolute">Carregando Google Forms...</iframe> 
     <script>
