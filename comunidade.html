@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<meta charset="utf-8"/>
+<html>
+  <body>
+    <div id="digitando" style="font-family: cursive; font-size: 300%; color: white; position: relative">Comunidade Doe Ideias > </div>
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe1yk63BIuzJEk1UlpZRUnHrn6e101DJOVvXtU4zwHifj5EBw/viewform?embedded=true" height="100%" width="100%" frameborder="0" marginheight="0" marginwidth="0" style="position: absolute"></iframe>
+    <script>
+      var caractere = 0;
+      var texto = 'método';      
+      var velocidade = 50; //milisegundos
+      function efeitoDigitarTexto() {
+        if (caractere < texto.length) {
+          if (texto.charAt(caractere) =="#"){
+            document.getElementById("digitando").innerHTML = document.getElementById("digitando").innerHTML.slice(0,-1);
+          }else if (texto.charAt(caractere) !="@"){
+            document.getElementById("digitando").innerHTML += texto.charAt(caractere);
+          }
+          caractere++;
+        }else{
+          caractere = 0;
+          texto = ' Despertar Positivo@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#################+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@### Transformador \\o/@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@################## Seu XD@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#######';
+        }
+        setTimeout(efeitoDigitarTexto, velocidade);
+      }
+      efeitoDigitarTexto();
+    </script>    
+  </body>
+</html>

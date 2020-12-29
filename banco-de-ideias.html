@@ -1,14 +1,88 @@
 <!DOCTYPE html>
+
 <head>
-  <script>
-    //window.TrelloBoards.load(document, { allAnchors: false });
+  <!--script>
+    window.TrelloBoards.load(document, { allAnchors: false });
+  </script-->
+  <script type="text/javascript">
+    var apiUrl = 'https://api.trello.com/1//lists/5431d240f0bcb60132fa4def/cards?key=d73e22aaf1a542561e80f5d4cb99c703&token=157d6a7e3ef866a31255513ec5fe9cfb6484be9ea73d8bcb20ad23ddba98f412';
+    fetch(apiUrl).then(response => {
+      return response.json();
+    }).then(data => {
+      var children = data;
+
+      function addHeaders(table, keys) {
+        var row = table.insertRow();
+        for (var i = 0; i < keys.length; i++) {
+          var cell = row.insertCell();
+          cell.appendChild(document.createTextNode(keys[i]));
+        }
+      }
+
+      var table = document.createElement('table');
+      for (var i = 0; i < children.length; i++) {
+
+        var child = children[i];
+        if (i === 0) {
+          //addHeaders(table, Object.keys(child)); // add all titles
+
+          addHeaders(table, ["Título", "Descrição", "Link"]); //add some titles
+        }
+        var row = table.insertRow();
+        var cell = row.insertCell();
+        cell.appendChild(document.createTextNode(child["name"]));
+        cell = row.insertCell();
+        cell.appendChild(document.createTextNode(child["desc"]));
+        cell = row.insertCell();
+        var link = document.createElement("a");
+        var url = child["shortUrl"];
+        link.setAttribute("href", url);
+        link.setAttribute("target", "_blank");
+        var linkText = document.createTextNode(url);
+        link.appendChild(linkText);
+        cell.appendChild(link);
+        /*
+        //add all cells
+        Object.keys(child).forEach(function (k) {
+          console.log(k);
+          var cell = row.insertCell();
+          cell.appendChild(document.createTextNode(child[k]));
+        })*/
+      }
+
+      document.getElementById('listaIdeias').appendChild(table);
+
+    }).catch(err => {
+      document.getElementById('listaIdeias').innerHTML = err;
+    });
   </script>
+  <style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    td,
+    th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+  </style>
 </head>
 <html>
-  <body">
-    <blockquote class="trello-board-compact">
+<body">
+  <!-- Primeira Tentativa de apresentação do board do trello, sem sucesso, pois só aparece uma miniatura sem mostrar o conteúdo dos cartões-->
+  <!--blockquote class="trello-board-compact">
       <a href="https://trello.com/b/EQrykVlR/doe-ideias">Trello Board</a>
     </blockquote>
-    <script src="https://p.trellocdn.com/embed.min.js"></script>
+    <script src="https://p.trellocdn.com/embed.min.js"></script-->
+  <div id="listaIdeias"></div>
   </body>
+
 </html>
