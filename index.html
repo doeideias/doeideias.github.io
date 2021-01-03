@@ -44,23 +44,52 @@
 
     /* TODO tirar borda preta do botão selecionado */
   </style>
+  <script>
+    function changeLocation(location) {
+      window.location = '#/' + location;
+      //console.log(window.location);
+    }
+
+    function loadConteudo(pagina, location) {
+      document.getElementById('conteudo').src = pagina;
+      if (location) {
+        changeLocation(pagina);
+      }
+    }
+
+    function loadPageFromLocation() {
+      if (document.location.toString().includes("#/")) {
+        var pagina = document.location.toString();
+        //console.log(pagina);
+        var hashPos = pagina.indexOf("#/");
+        pagina = pagina.substring(hashPos + 2, pagina.length);
+        //console.log(pagina);
+        loadConteudo(pagina, false);
+      } else {
+        loadConteudo("comunidade.html", true);
+      }
+    }
+  </script>
 </head>
 
-<body style="background-color:#03A9F4">
+<body style="background-color:#03A9F4" onload="loadPageFromLocation();">
   <a href="https://www.facebook.com/groups/doeideias/" target="_blank"><img src="facebook_icon.png" alt="Smiley face"
       width="42" height="42"></a>
   <a href="https://www.youtube.com/channel/UClO0UW4CB222hF5E6b4amMg" target="_blank"><img src="youtube_icon.png"
       alt="Meu canal" style="margin-left: 4px;"></a>
   <button class="button button2" style="position:absolute;left:122px"
-    onclick="document.getElementById('conteudo').src = 'comunidade.html'; window.location = '#/comunidade.html';">Comunidade</button>
+    onclick="loadConteudo('comunidade.html',true);">Comunidade</button>
   <button class="button button2" style="position:absolute;left:284px"
-    onclick="document.getElementById('conteudo').src = 'banco-de-ideias.html'; window.location = '#/banco-de-ideias.html';">Banco de ideias</button>
+    onclick="loadConteudo('banco-de-ideias.html',true);">Banco
+    de ideias</button>
   <button class="button button2" style="position:absolute;left:468px"
-    onclick="document.getElementById('conteudo').src = 'profissional-classe-a.html';  window.location = '#/profissional-classe-a.html';">Profissional Classe A</button>
-      <button class="button button2" style="position:absolute;left:690px"
-    onclick="document.getElementById('conteudo').src = 'o-melhor-ano-de-todos.html'; window.location = '#/o-melhor-ano-de-todos.html';">O melhor ano de todos</button>
+    onclick="loadConteudo('profissional-classe-a.html',true);">Profissional
+    Classe A</button>
+  <button class="button button2" style="position:absolute;left:690px"
+    onclick="loadConteudo('o-melhor-ano-de-todos.html',true);">O
+    melhor ano de todos</button>
   <div> </div>
-  <iframe id="conteudo" src="comunidade.html" width=99% height=85% frameborder="0" marginheight="0" marginwidth="0"
+  <iframe id="conteudo" width=99% height=85% frameborder="0" marginheight="0" marginwidth="0"
     style="position: absolute">Carregando Google Forms...</iframe>
 </body>
 
