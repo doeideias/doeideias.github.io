@@ -47,7 +47,6 @@
   <script>
     function changeLocation(location) {
       window.location = '#/' + location;
-      //console.log(window.location);
     }
 
     function loadConteudo(pagina, location) {
@@ -60,10 +59,8 @@
     function loadPageFromLocation() {
       if (document.location.toString().includes("#/")) {
         var pagina = document.location.toString();
-        //console.log(pagina);
         var hashPos = pagina.indexOf("#/");
         pagina = pagina.substring(hashPos + 2, pagina.length);
-        //console.log(pagina);
         loadConteudo(pagina, false);
       } else {
         loadConteudo("comunidade.html", true);
